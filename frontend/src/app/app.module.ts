@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {NgModule, OnInit} from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
@@ -20,7 +20,7 @@ import {RouterModule} from '@angular/router';
     LoginModule,
     RouterModule.forRoot([
       {
-        path:'login',
+        path:'',
         component: LoginComponent
       },
       {
@@ -33,4 +33,9 @@ import {RouterModule} from '@angular/router';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule implements OnInit{
+
+  ngOnInit( ) {
+  }
+
+}

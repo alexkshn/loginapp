@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<a routerLink=\"/login\">Login</a><br>\n<a routerLink=\"/welcome\">Welcome</a><br>\n\n\n<router-outlet></router-outlet>\n"
+module.exports = "\n\n<router-outlet></router-outlet>\n"
 
 /***/ }),
 
@@ -97,6 +97,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var AppModule = (function () {
     function AppModule() {
     }
+    AppModule.prototype.ngOnInit = function () {
+    };
     return AppModule;
 }());
 AppModule = __decorate([
@@ -111,7 +113,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_5__login_login_module__["a" /* LoginModule */],
             __WEBPACK_IMPORTED_MODULE_6__angular_router__["a" /* RouterModule */].forRoot([
                 {
-                    path: 'login',
+                    path: '',
                     component: __WEBPACK_IMPORTED_MODULE_4__login_login_component__["a" /* LoginComponent */]
                 },
                 {
@@ -134,10 +136,10 @@ AppModule = __decorate([
 
 exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-base.js")(false);
 // imports
-
+exports.push([module.i, "@import url(http://weloveiconfonts.com/api/?family=brandico|entypo|openwebicons|zocial);", ""]);
 
 // module
-exports.push([module.i, "", ""]);
+exports.push([module.i, "/* brandico */\n[class*=\"brandico-\"]:before {\n  font-family: 'brandico', sans-serif;\n}\n\n/* entypo */\n[class*=\"entypo-\"]:before {\n  font-family: 'entypo', sans-serif;\n}\n\n/* openwebicons */\n[class*=\"openwebicons-\"]:before {\n  font-family: 'OpenWeb Icons', sans-serif;\n}\n\n/* zocial */\n[class*=\"zocial-\"]:before {\n  font-family: 'zocial', sans-serif;\n}\n\n.form-signin{\n  max-width: 330px;\n  padding: 15px;\n  margin: 0 auto;\n}\n\n\n.login-input {\n  margin-bottom: -1px;\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n.login-input-pass {\n  margin-bottom: 10px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n\n\n.signup-input {\n  margin-bottom: -1px;\n  border-bottom-left-radius: 0;\n  border-bottom-right-radius: 0;\n}\n\n.signup-input-confirm {\n  margin-bottom: 10px;\n  border-top-left-radius: 0;\n  border-top-right-radius: 0;\n}\n\n\n\n.create-account {\n  text-align: center;\n  width: 100%;\n  display: block;\n}\n\n.form-signin .form-control {\n  position: relative;\n  font-size: 16px;\n  height: auto;\n  padding: 10px;\n  box-sizing: border-box;\n}\n\n.btn-center{\n  width: 50%;\n  text-align: center;\n  margin: inherit;\n}\n\n.social-login-btn {\n  margin: 5px;\n  width: 20%;\n  font-size: 250%;\n  padding: 0;\n}\n\n.social-login-more {\n  width: 45%;\n}\n\n.social-google {\n  background-color: #da573b;\n  border-color: #be5238;\n}\n.social-google:hover{\n  background-color: #be5238;\n  border-color: #9b4631;\n}\n\n.social-twitter {\n  background-color: #1daee3;\n  border-color: #3997ba;\n}\n.social-twitter:hover {\n  background-color: #3997ba;\n  border-color: #347b95;\n}\n\n.social-facebook {\n  background-color: #4c699e;\n  border-color: #47618d;\n}\n.social-facebook:hover {\n  background-color: #47618d;\n  border-color: #3c5173;\n}\n\n.social-linkedin {\n  background-color: #4875B4;\n  border-color: #466b99;\n}\n.social-linkedin:hover {\n  background-color: #466b99;\n  border-color: #3b5a7c;\n}\n", ""]);
 
 // exports
 
@@ -150,7 +152,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  login works!\n</p>\n"
+module.exports = "<link href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css\" rel=\"stylesheet\">\n\n<div class=\"container\">\n\n  <script id=\"metamorph-1-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-21-start\" type=\"text/x-placeholder\"></script>\n\n  <div class=\"container text-center\">\n    <form class=\"form-signin\" data-ember-action=\"2\">\n      <h2 class=\"form-signin-heading\">Log in</h2>\n\n      <small class=\"text-muted\">Connect [your service] with your favorite social network</small>\n\n      <br>\n\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-facebook\" href=\"/auth/facebook\"><i class=\"fa fa-facebook\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-twitter\" href=\"/auth/twitter\"><i class=\"fa fa-twitter\"></i></a>\n      </p>\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-linkedin\" href=\"/auth/linkedin\"><i class=\"fa fa-linkedin\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-google\" href=\"/auth/google\"><i class=\"fa fa-google-plus\"></i></a>\n      </p>\n\n      <small class=\"text-muted\">Or sign in with [your service]</small>\n      <br><br>\n\n      <input id=\"ember360\" class=\"ember-view ember-text-field form-control login-input\" placeholder=\"Email Address\" type=\"text\">\n      <input id=\"ember361\" class=\"ember-view ember-text-field form-control login-input-pass\" placeholder=\"Password\" type=\"password\">\n\n      <script id=\"metamorph-22-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-22-end\" type=\"text/x-placeholder\"></script>\n\n      <button class=\"btn btn-lg btn-primary btn-block btn-center\" type=\"submit\" data-bindattr-3=\"3\">Sign in</button>\n      <br>\n\n      <small class=\"create-account text-muted\">Dont have a [your service] or social network account? <a routerLink=\"/welcome\">Sign Up </a></small>\n\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -244,7 +246,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/welcome/welcome.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  welcome works!\n</p>\n"
+module.exports = "<div class=\"container\" style=\"margin-top:30px\">\n  <div class=\"col-md-10 col-md-offset-1\">\n    <div class=\"panel panel-default\">\n      <div class=\"panel-heading\"><h3 class=\"panel-title\"><strong>Sign up </strong></h3></div>\n\n      <div class=\"panel-body\">\n        <form role=\"form\">\n          <br>\n          <!--<div class=\"alert alert-danger\">-->\n            <!--<a class=\"close\" data-dismiss=\"alert\" href=\"#\">×</a>Incorrect Username or Password!-->\n          <!--</div>-->\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-4 col-md-4\">\n              <div class=\"form-group\">\n                <input type=\"text\" name=\"first_name\" id=\"first_name\" class=\"form-control\" placeholder=\"First Name\" tabindex=\"1\">\n              </div>\n            </div>\n            <div class=\"col-xs-12 col-sm-4 col-md-4\">\n              <div class=\"form-group\">\n                <input type=\"text\" name=\"middle_name\" id=\"middle_name\" class=\"form-control\" placeholder=\"Middle Name\" tabindex=\"1\">\n              </div>\n            </div>\n            <div class=\"col-xs-12 col-sm-4 col-md-4\">\n              <div class=\"form-group\">\n                <input type=\"text\" name=\"last_name\" id=\"last_name\" class=\"form-control \" placeholder=\"Last Name\" tabindex=\"2\">\n              </div>\n            </div>\n          </div>\n          <div class=\"form-group\">\n            <input type=\"text\" name=\"display_name\" id=\"display_name\" class=\"form-control \" placeholder=\"Display Name\" tabindex=\"3\">\n          </div>\n          <div class=\"form-group\">\n            <input type=\"email\" name=\"email\" id=\"email\" class=\"form-control \" placeholder=\"Email Address\" tabindex=\"4\">\n          </div>\n          <div class=\"row\">\n            <div class=\"col-xs-12 col-sm-6 col-md-6\">\n              <div class=\"form-group\">\n                <input type=\"password\" name=\"password\" id=\"password\" class=\"form-control \" placeholder=\"Password\" tabindex=\"5\">\n              </div>\n            </div>\n            <div class=\"col-xs-12 col-sm-6 col-md-6\">\n              <div class=\"form-group\">\n                <input type=\"password\" name=\"password_confirmation\" id=\"password_confirmation\" class=\"form-control \" placeholder=\"Confirm Password\" tabindex=\"6\">\n              </div>\n            </div>\n          </div>\n\n          <div class=\"input-group\">\n            <div class=\"checkbox\" style=\"margin-top: 0px;\">\n              <label>\n                <input id=\"login-remember\" type=\"checkbox\" name=\"remember\" value=\"1\"> Remember me\n              </label>\n            </div>\n          </div>\n\n          <button type=\"submit\" class=\"btn btn-success\">Register</button>\n\n          <hr style=\"margin-top:10px;margin-bottom:10px;\" >\n\n          <div class=\"form-group\">\n\n\n          </div>\n        </form>\n      </div>\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
