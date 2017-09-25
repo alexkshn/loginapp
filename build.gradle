@@ -33,6 +33,7 @@ dependencies
 		{
 			compile('org.springframework.boot:spring-boot-starter-web')
 			compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version: '1.5.4.RELEASE'
+			compile 'org.springframework.boot:spring-boot-starter-data-mongodb'
 			runtime('org.springframework.boot:spring-boot-devtools')
 			testCompile('org.springframework.boot:spring-boot-starter-test')
 		}

@@ -2,8 +2,6 @@ import {Component, OnInit, AfterViewInit} from '@angular/core';
 
 
 class User {
-
-
   firstName: string;
   middleName: string;
   lastName: string;
@@ -15,7 +13,6 @@ class User {
     this.lastName = lastName;
     this.email = email;
   }
-
 }
 
 @Component({
