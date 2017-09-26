@@ -7,7 +7,7 @@
 
   <div class="container text-center">
     <form class="form-signin" data-ember-action="2">
-      <h2 class="form-signin-heading">Welcome {{userName}} to Login Page</h2>
+      <h2 class="form-signin-heading" [ngStyle]="{color: getColour()}">Welcome {{userName}} to Login Page</h2>
 
       <small class="text-muted">Connect with your favorite social network</small>
 
@@ -25,8 +25,8 @@
       <small class="text-muted">Or sign in with your account</small>
       <br><br>
 
-      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text">
-      <input id="ember361" class="ember-view ember-text-field form-control login-input-pass" placeholder="Password" type="password">
+      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text" [disabled] = allowModify() (change)="validateMail($event)"> <span>{{emailInfoString}}</span>
+      <input id="ember361" class="ember-view ember-text-field form-control login-input-pass" placeholder="Password" type="password" [disabled] = allowModify()>
 
       <script id="metamorph-22-start" type="text/x-placeholder"></script><script id="metamorph-22-end" type="text/x-placeholder"></script>
 

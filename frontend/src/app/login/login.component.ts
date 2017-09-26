@@ -1,4 +1,5 @@
 import {Component, OnInit, AfterViewInit} from '@angular/core';
+import {Validators} from "@angular/forms";
 
 
 class User {
@@ -26,11 +27,12 @@ export class LoginComponent implements OnInit, AfterViewInit{
 
 
   constructor() {
-    this.userName = "Default";
+    this.userName = "Unknown";
   }
 
   userList: any;
   userName: string;
+  emailInfoString: string;
 
   ngOnInit() {
   }
@@ -43,17 +45,39 @@ export class LoginComponent implements OnInit, AfterViewInit{
 
 
       let usersJson = JSON.parse(result.toString());
-      console.log(result);
       console.log(usersJson);
       this.userList = <User>usersJson;
-      let user = this.userList[1];
+      let user = this.userList[0];
       this.userName = user.firstName;
-      console.log (this.userName);
 
     }, (error) => {
       console.error(error);
     });
+
   }
+
+  getColour () {
+    return this.userName === 'Unknown'?'red':'blue';
+  }
+
+  allowModify () {
+   return this.getColour() === 'red'?true:false;
+  }
+
+  validateMail (event: Event) {
+    let mail = (<HTMLInputElement>event.target).value;
+
+    let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+    Validators.pattern(EMAIL_REGEXP);
+
+    if (!mail.match(EMAIL_REGEXP))
+    {
+      this.emailInfoString = 'Please introduce the correct e-mail';
+    }
+
+  }
+
+
 
   getUsers () {
     return new Promise ((resolve, reject)=> {
