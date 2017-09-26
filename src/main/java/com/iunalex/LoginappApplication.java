@@ -51,31 +51,6 @@ public class LoginappApplication extends WebSecurityConfigurerAdapter {
 
 	}
 
-
-//	@Bean
-//	CommandLineRunner init(UserRepository userRepository) {
-
-//		return args -> {
-
-//			UserServiceImpl userService = new UserServiceImpl(userRepository);
-//
-//			User user1 = new User();
-//
-//			user1 = userService.getById("59a68861a6b08c08697c49b6");
-
-//			System.out.println(user1.getFirstName());
-//			user1.setMiddleName("Une4ka");
-//			userService.saveOrUpdate(user1);
-//
-//			List<User> users = userService.listAll();
-//
-//			System.out.println(users);
-
-
-
-
-//		};
-//	}
 @Autowired
 OAuth2ClientContext oauth2ClientContext;
 
@@ -129,14 +104,7 @@ OAuth2ClientContext oauth2ClientContext;
 		return new ClientResources();
 	}
 
-//	@Bean
-//	public FilterRegistrationBean oauth2ClientFilterRegistration(
-//			OAuth2ClientContextFilter filter) {
-//		FilterRegistrationBean registration = new FilterRegistrationBean();
-//		registration.setFilter(filter);
-//		registration.setOrder(-100);
-//		return registration;
-//	}
+
 
 
 
