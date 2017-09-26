@@ -152,7 +152,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<link href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css\" rel=\"stylesheet\">\n\n<div class=\"container\">\n\n  <script id=\"metamorph-1-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-21-start\" type=\"text/x-placeholder\"></script>\n\n  <div class=\"container text-center\">\n    <form class=\"form-signin\" data-ember-action=\"2\">\n      <h2 class=\"form-signin-heading\">Log in</h2>\n\n      <small class=\"text-muted\">Connect [your service] with your favorite social network</small>\n\n      <br>\n\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-facebook\" href=\"/auth/facebook\"><i class=\"fa fa-facebook\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-twitter\" href=\"/auth/twitter\"><i class=\"fa fa-twitter\"></i></a>\n      </p>\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-linkedin\" href=\"/auth/linkedin\"><i class=\"fa fa-linkedin\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-google\" href=\"/auth/google\"><i class=\"fa fa-google-plus\"></i></a>\n      </p>\n\n      <small class=\"text-muted\">Or sign in with [your service]</small>\n      <br><br>\n\n      <input id=\"ember360\" class=\"ember-view ember-text-field form-control login-input\" placeholder=\"Email Address\" type=\"text\">\n      <input id=\"ember361\" class=\"ember-view ember-text-field form-control login-input-pass\" placeholder=\"Password\" type=\"password\">\n\n      <script id=\"metamorph-22-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-22-end\" type=\"text/x-placeholder\"></script>\n\n      <button class=\"btn btn-lg btn-primary btn-block btn-center\" type=\"submit\" data-bindattr-3=\"3\">Sign in</button>\n      <br>\n\n      <small class=\"create-account text-muted\">Dont have a [your service] or social network account? <a routerLink=\"/welcome\">Sign Up </a></small>\n\n    </form>\n  </div>\n</div>\n"
+module.exports = "<link href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css\" rel=\"stylesheet\"\n      xmlns:th=\"http://www.w3.org/1999/xhtml\">\n\n<div class=\"container\">\n\n  <script id=\"metamorph-1-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-21-start\" type=\"text/x-placeholder\"></script>\n\n  <div class=\"container text-center\">\n    <form class=\"form-signin\" data-ember-action=\"2\">\n      <h2 class=\"form-signin-heading\" [ngStyle]=\"{color: getColour()}\">Welcome {{userName}} to Login Page</h2>\n\n      <small class=\"text-muted\">Connect with your favorite social network</small>\n\n      <br>\n\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-facebook\" href=\"/login/facebook\"><i class=\"fa fa-facebook\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-twitter\" href=\"/auth/twitter\"><i class=\"fa fa-twitter\"></i></a>\n      </p>\n      <p>\n        <a class=\"btn btn-primary social-login-btn social-linkedin\" href=\"/auth/linkedin\"><i class=\"fa fa-linkedin\"></i></a>\n        <a class=\"btn btn-primary social-login-btn social-google\" href=\"/login/github\"><i class=\"fa fa-google-plus\"></i></a>\n      </p>\n\n      <small class=\"text-muted\">Or sign in with your account</small>\n      <br><br>\n\n      <input id=\"ember360\" class=\"ember-view ember-text-field form-control login-input\" placeholder=\"Email Address\" type=\"text\" [disabled] = allowModify() (change)=\"validateMail($event)\"> <span>{{emailInfoString}}</span>\n      <input id=\"ember361\" class=\"ember-view ember-text-field form-control login-input-pass\" placeholder=\"Password\" type=\"password\" [disabled] = allowModify()>\n\n      <script id=\"metamorph-22-start\" type=\"text/x-placeholder\"></script><script id=\"metamorph-22-end\" type=\"text/x-placeholder\"></script>\n\n      <button class=\"btn btn-lg btn-primary btn-block btn-center\" type=\"submit\" data-bindattr-3=\"3\" >Sign in</button>\n      <br>\n\n      <small class=\"create-account text-muted\">Don't have a or social network account? <a routerLink=\"/welcome\">Sign Up </a></small>\n      <small class=\"create-account text-muted\">Want to get to secured zone? Just login <a href=\"/secured\">To secured ZONE </a></small>\n\n    </form>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -161,6 +161,7 @@ module.exports = "<link href=\"//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_forms__ = __webpack_require__("../../../forms/@angular/forms.es5.js");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LoginComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -172,10 +173,69 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+var User = (function () {
+    function User(firstName, middleName, lastName, email) {
+        this.firstName = firstName;
+        this.middleName = middleName;
+        this.lastName = lastName;
+        this.email = email;
+    }
+    return User;
+}());
 var LoginComponent = (function () {
     function LoginComponent() {
+        this.userName = "Unknown";
     }
     LoginComponent.prototype.ngOnInit = function () {
+    };
+    LoginComponent.prototype.ngAfterViewInit = function () {
+        var _this = this;
+        console.log(this.userName);
+        this.getUsers().then(function (result) {
+            var usersJson = JSON.parse(result.toString());
+            console.log(usersJson);
+            console.log(usersJson.userAuthentication.details.name);
+            _this.userName = usersJson.userAuthentication.details.name;
+            _this.userList = usersJson;
+            var user = _this.userList[0];
+            _this.userName = user.firstName;
+        }, function (error) {
+            console.error(error);
+        });
+    };
+    LoginComponent.prototype.getColour = function () {
+        return this.userName === 'Unknown' ? 'red' : 'blue';
+    };
+    LoginComponent.prototype.allowModify = function () {
+        return this.getColour() === 'red' ? true : false;
+    };
+    LoginComponent.prototype.validateMail = function (event) {
+        var mail = event.target.value;
+        var EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
+        __WEBPACK_IMPORTED_MODULE_1__angular_forms__["a" /* Validators */].pattern(EMAIL_REGEXP);
+        if (!mail.match(EMAIL_REGEXP)) {
+            this.emailInfoString = 'Please introduce the correct e-mail';
+        }
+    };
+    LoginComponent.prototype.getUsers = function () {
+        return new Promise(function (resolve, reject) {
+            var url = "/user/";
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url, true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        resolve(xhr.response);
+                        xhr = new XMLHttpRequest();
+                        xhr.open("GET", "/good", true);
+                        xhr.send();
+                        reject(xhr.response);
+                    }
+                }
+            };
+        });
     };
     return LoginComponent;
 }());

@@ -104,7 +104,14 @@ OAuth2ClientContext oauth2ClientContext;
 		return new ClientResources();
 	}
 
-
+	@Bean
+	public FilterRegistrationBean oauth2ClientFilterRegistration(
+			OAuth2ClientContextFilter filter) {
+		FilterRegistrationBean registration = new FilterRegistrationBean();
+		registration.setFilter(filter);
+		registration.setOrder(-100);
+		return registration;
+	}
 
 
 
