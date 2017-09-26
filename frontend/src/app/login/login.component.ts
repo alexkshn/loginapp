@@ -46,6 +46,9 @@ export class LoginComponent implements OnInit, AfterViewInit{
 
       let usersJson = JSON.parse(result.toString());
       console.log(usersJson);
+      console.log(usersJson.userAuthentication.details.name)
+      this.userName = usersJson.userAuthentication.details.name
+
       this.userList = <User>usersJson;
       let user = this.userList[0];
       this.userName = user.firstName;
@@ -80,8 +83,9 @@ export class LoginComponent implements OnInit, AfterViewInit{
 
 
   getUsers () {
+
     return new Promise ((resolve, reject)=> {
-      let url = "/login";
+      let url = "/user/";
       let xhr = new XMLHttpRequest();
 
       xhr.open("GET", url, true);
@@ -91,7 +95,11 @@ export class LoginComponent implements OnInit, AfterViewInit{
         if (xhr.readyState == 4) {
           if (xhr.status == 200) {
             resolve(xhr.response);
+            xhr = new XMLHttpRequest()
+            xhr.open("GET","/good",true)
+            xhr.send();
             reject(xhr.response);
+
           }
         }
       }
