@@ -25,7 +25,8 @@
       <small class="text-muted">Or sign in with your account</small>
       <br><br>
 
-      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text" [disabled] = allowModify() (change)="validateMail($event)"> <span>{{emailInfoString}}</span>
+      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text" [disabled] = allowModify() (change)="validateMail($event)">
+        <span class="text-muted">{{emailInfoString}}</span>
       <input id="ember361" class="ember-view ember-text-field form-control login-input-pass" placeholder="Password" type="password" [disabled] = allowModify()>
 
       <script id="metamorph-22-start" type="text/x-placeholder"></script><script id="metamorph-22-end" type="text/x-placeholder"></script>

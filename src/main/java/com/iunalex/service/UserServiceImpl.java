@@ -2,6 +2,7 @@ package com.iunalex.service;
 
 import com.iunalex.domain.User;
 import com.iunalex.repository.UserRepository;
+import com.mongodb.BasicDBObject;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,20 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getById(String id) {
         return userRepository.findOne(id);
+    }
+
+    @Override
+    public String checkUser(String email, String password) {
+
+        BasicDBObject emailQuery = new BasicDBObject();
+        List<BasicDBObject> obj = new ArrayList<BasicDBObject>();
+        obj.add(new BasicDBObject("eMail", email));
+        obj.add(new BasicDBObject("password", password));
+
+        emailQuery.put("$and", obj);
+
+        return emailQuery.toString();
+
     }
 
     @Override

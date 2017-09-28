@@ -6,6 +6,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { LoginComponent } from './login/login.component';
 import {LoginModule} from "./login/login.module";
 import {RouterModule} from '@angular/router';
+import {HttpModule} from "@angular/http";
 
 
 
@@ -17,6 +18,7 @@ import {RouterModule} from '@angular/router';
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     LoginModule,
     RouterModule.forRoot([
       {

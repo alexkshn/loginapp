@@ -14,6 +14,8 @@ public interface UserService {
 
     User getById(String id);
 
+    String checkUser (String email, String password);
+
     User saveOrUpdate (User user);
 
 
