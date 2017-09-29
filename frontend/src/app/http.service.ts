@@ -14,10 +14,11 @@ export class HttpService{
     return this.http.get('/user');
   }
 
-  redirect() {
-    console.log('here');
-    return this.http.get('/good');
+  logout() {
+    return this.http.post('/logout', localStorage.getItem('currentUser'));
   }
+
+
 }
 
 

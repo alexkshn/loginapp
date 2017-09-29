@@ -20,27 +20,20 @@ export class LoginComponent implements OnInit, AfterViewInit{
   }
 
   ngOnInit() {
+
   }
 
   ngAfterViewInit() {
 
     this.http.getUsers().subscribe((response) => {
-      console.log(response);
 
-      let usersJson =  response.json();
+      let usersJson = response.json();
       console.log(usersJson);
-      console.log(usersJson.userAuthentication.details.name);
       this.userName = usersJson.userAuthentication.details.name;
-      this.onHttpRequest();
+      localStorage.setItem('currentUser', JSON.stringify(usersJson));
 
     }), (error) =>
       console.error(error);
-  }
-
-  onHttpRequest() {
-
-    console.clear();
-    this.http.redirect().subscribe((response) => console.log(response), (error) => console.log(error));
 
   }
 
@@ -56,11 +49,13 @@ export class LoginComponent implements OnInit, AfterViewInit{
 
     this.emailInfoString = "";
     let mail = (<HTMLInputElement>event.target).value;
-
-
     let EMAIL_REGEXP = /^[a-z0-9!#$%&'*+\/=?^_`{|}~.-]+@[a-z0-9]([a-z0-9-]*[a-z0-9])?(\.[a-z0-9]([a-z0-9-]*[a-z0-9])?)*$/i;
     this.emailInfoString = !mail.match(EMAIL_REGEXP)?'Please introduce the correct e-mail':'';
 
+  }
+
+  logout() {
+    this.http.logout().subscribe((response)=> {console.log(response)});
   }
 
 }
