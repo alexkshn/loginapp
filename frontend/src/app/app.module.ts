@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import {LoginModule} from "./login/login.module";
 import {RouterModule} from '@angular/router';
 import {HttpModule} from "@angular/http";
+import {FormsModule} from "@angular/forms";
 
 
 
@@ -19,6 +20,7 @@ import {HttpModule} from "@angular/http";
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     LoginModule,
     RouterModule.forRoot([
       {

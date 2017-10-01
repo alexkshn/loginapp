@@ -33,7 +33,7 @@ public class LoginController {
     UserServiceImpl userService = new UserServiceImpl(userRepository);
 
 
-    @RequestMapping(value="/getAllUsers", method = RequestMethod.GET)
+    @RequestMapping(value="/getAllTheUsers", method = RequestMethod.GET)
     public ResponseEntity<List<User>> getUser(){
 
         List<User> userList = userService.listAll();
@@ -45,10 +45,20 @@ public class LoginController {
 
     public ResponseEntity<User> login () {
 
-
-
         return new ResponseEntity<User>(new User(), HttpStatus.OK);
     }
+
+
+    @RequestMapping("/getAllUsers")
+    public ResponseEntity<User> getAllUsers(){
+
+        List<User> userList = userService.listAll();
+
+        System.out.println("here");
+
+        return new ResponseEntity<User> (userList.get(1), HttpStatus.OK);
+    }
+
 
 
     private String getPrincipal(){
@@ -62,5 +72,7 @@ public class LoginController {
         }
         return userName;
     }
+
+
 
 }

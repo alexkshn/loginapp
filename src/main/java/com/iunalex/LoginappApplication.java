@@ -16,6 +16,8 @@ import org.springframework.boot.context.properties.NestedConfigurationProperty;
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.core.annotation.Order;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.oauth2.client.OAuth2ClientContext;
@@ -30,6 +32,7 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.security.web.csrf.CookieCsrfTokenRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.filter.CompositeFilter;
 
@@ -56,12 +59,20 @@ public class LoginappApplication extends WebSecurityConfigurerAdapter {
 @Autowired
 OAuth2ClientContext oauth2ClientContext;
 
+
+	@Autowired
+	UserRepository userRepository;
+
+	@Autowired
+	UserServiceImpl userService = new UserServiceImpl(userRepository);
+
+
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
 				.antMatcher("/**")
 				.authorizeRequests()
-				.antMatchers("/", "/login**")
+				.antMatchers("/", "/login**", "/getAllUsers", "/signUp")
 				.permitAll()
 				.anyRequest()
 				.authenticated()
@@ -145,5 +156,4 @@ OAuth2ClientContext oauth2ClientContext;
 			return "You're in a secured zone, congratulations!";
 
 		}
-
 }
