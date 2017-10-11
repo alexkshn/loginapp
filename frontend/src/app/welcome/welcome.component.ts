@@ -13,6 +13,7 @@ export class WelcomeComponent implements OnInit {
   model: any = {};
   someVar = 'value';
 
+
   constructor(private http: HttpService) {}
 
   ngOnInit() {

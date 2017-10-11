@@ -9,6 +9,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
  * Created by ipanasenco on 8/16/17.
  */
 
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import javax.validation.constraints.NotNull;
+
+
 @Document(collection = "user")
 public class User {
 
@@ -21,18 +30,33 @@ public class User {
 
     private String middleName;
 
-    @Indexed(unique = true)
-    private String eMail;
+    private String roles[];
 
+    @Indexed(unique = true)
+    private String userName;
+
+    @NotNull
+    @JsonDeserialize
     private String password;
 
     public User() {
     }
 
-    public User(String lastName, String firstName, String eMail) {
+
+
+
+    public User(String lastName, String firstName, String userName) {
         this.lastName = lastName;
         this.firstName = firstName;
-        this.eMail = eMail;
+        this.userName = userName;
+    }
+
+    public String[] getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String[] roles) {
+        this.roles = roles;
     }
 
     public String getId() {
@@ -67,12 +91,12 @@ public class User {
         this.middleName = middleName;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getUserName() {
+        return userName;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

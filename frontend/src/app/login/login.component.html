@@ -19,19 +19,19 @@
       </p>
       <p>
         <a class="btn btn-primary social-login-btn social-linkedin" href="/auth/linkedin"><i class="fa fa-linkedin"></i></a>
-        <a class="btn btn-primary social-login-btn social-google" href="/login/github"><i class="fa fa-google-plus"></i></a>
+        <a class="btn btn-primary social-login-btn social-google" href="/login/simpleauth"><i class="fa fa-google-plus"></i></a>
       </p>
 
       <small class="text-muted">Or sign in with your account</small>
       <br><br>
 
-      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text" [disabled] = allowModify() (change)="validateMail($event)">
+      <input id="ember360" class="ember-view ember-text-field form-control login-input" placeholder="Email Address" type="text" [(ngModel)]="loginData.username">
         <span class="text-muted">{{emailInfoString}}</span>
-      <input id="ember361" class="ember-view ember-text-field form-control login-input-pass" placeholder="Password" type="password" [disabled] = allowModify()>
+      <input id="ember361" class="ember-view ember-text-field form-control login-input-pass" placeholder="Password" type="password" [(ngModel)] = "loginData.password">
 
       <script id="metamorph-22-start" type="text/x-placeholder"></script><script id="metamorph-22-end" type="text/x-placeholder"></script>
 
-      <button class="btn btn-lg btn-primary btn-block btn-center" type="submit" data-bindattr-3="3" >Sign in</button>
+      <button class="btn btn-lg btn-primary btn-block btn-center" type="submit" data-bindattr-3="3" (click)="login()">Sign in</button>
 
       <!--<div class="alert alert-danger">-->
       <!--<a class="close" data-dismiss="alert" href="#">×</a>Incorrect Username or Password!-->

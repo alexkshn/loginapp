@@ -38,7 +38,7 @@ public class WelcomeController {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(user.getPassword());
 
-        System.out.println("user is here "+ user.getFirstName()+ user.getLastName()+ user.geteMail());
+        System.out.println("user is here "+ user.getFirstName()+ user.getLastName()+ user.getUserName());
         user.setPassword(hashedPassword);
 
         userService.saveOrUpdate(user);

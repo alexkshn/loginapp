@@ -22,6 +22,16 @@ github:
      userInfoUri: https://api.github.com/user
 
 
+simpleauth:
+  client:
+        clientId: acme
+        clientSecret: acmesecret
+        accessTokenUri: http://localhost:8080/oauth/access_token
+        userAuthorizationUri: http://localhost:8080/oauth/authorize
+        clientAuthenticationScheme: form
+        resource:
+         userInfoUri: http://localhost:8080/user
+
 security:
   oauth2:
     client:
