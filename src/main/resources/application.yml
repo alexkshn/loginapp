@@ -1,3 +1,12 @@
+linkedin:
+  client:
+    clientId: 86f8kr2uasdyd4
+    clientSecret: jPtm4f6CiRIx6IUg
+    accessTokenUri: https://www.linkedin.com/oauth/v2/accessToken
+    userAuthorizationUri: https://www.linkedin.com/oauth/v2/authorization
+  resource:
+     userInfoUri: https://api.linkedin.com/v1/people/~?format=json
+
 facebook:
   client:
     clientId: 1431880543597353
@@ -10,13 +19,12 @@ facebook:
   resource:
     userInfoUri: https://graph.facebook.com/me
 
-
 github:
   client:
     clientId: c7a9c7e57c37f22178fc
     clientSecret: 5fe28a24c61422a104eb7b0f24a00f4b76a8360d
-    accessTokenUri: https://github.com/login/oauth/access_token
-    userAuthorizationUri: https://github.com/login/oauth/authorize
+    accessTokenUri: https://www.linkedin.com/uas/oauth2/accessToken
+    userAuthorizationUri: https://www.linkedin.com/uas/oauth2/authorization
     clientAuthenticationScheme: form
     resource:
      userInfoUri: https://api.github.com/user
@@ -29,3 +37,5 @@ security:
       client-secret: acmesecret
       scope: read,write
       auto-approve-scopes: '.*'
+
+

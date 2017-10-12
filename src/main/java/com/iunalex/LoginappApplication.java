@@ -88,7 +88,7 @@ OAuth2ClientContext oauth2ClientContext;
 		CompositeFilter filter = new CompositeFilter();
 		List<Filter> filters = new ArrayList<>();
 		filters.add(ssoFilter(facebook(), "/login/facebook"));
-//		filters.add(ssoFilter(github(), "/login/github"));
+		filters.add(ssoFilter(linkedin(), "/login/linkedin"));
 		filter.setFilters(filters);
 		return filter;
 	}
@@ -106,8 +106,8 @@ OAuth2ClientContext oauth2ClientContext;
 	}
 
 	@Bean
-	@ConfigurationProperties("github")
-	public ClientResources github() {
+	@ConfigurationProperties("linkedin")
+	public ClientResources linkedin() {
 		return new ClientResources();
 	}
 
